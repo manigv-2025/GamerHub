@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Create Post - GamerHub{% endblock %}
+{% block content %}
+<div class="container" style="max-width: 800px;">
+    <h1 style="color: #00d4ff;">Create New Post</h1>
+    
+    <form method="POST" style="background: #1a1f3a; padding: 30px; border-radius: 8px; margin-top: 30px;">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Title *</label>
+            <input type="text" name="title" required style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+            <div>
+                <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Category *</label>
+                <select name="category" required style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+                    <option value="">Select Category</option>
+                    {% for cat in categories %}
+                    <option value="{{ cat }}">{{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Rating (1-10)</label>
+                <input type="number" name="rating" min="1" max="10" step="0.1" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Author *</label>
+            <input type="text" name="author" required style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Description (Short preview) *</label>
+            <textarea name="description" required rows="2" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Content (HTML) *</label>
+            <textarea name="content" required rows="8" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Featured Image URL</label>
+            <input type="url" name="featured_image" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Pros (one per line)</label>
+            <textarea name="pros" rows="4" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Cons (one per line)</label>
+            <textarea name="cons" rows="4" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;"></textarea>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Affiliate Link</label>
+            <input type="url" name="affiliate_link" style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: flex; align-items: center; color: #00d4ff;">
+                <input type="checkbox" name="published" style="margin-right: 10px;">
+                Publish Now
+            </label>
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 12px; background: #00d4ff; color: #0a0e27; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px;">Create Post</button>
+    </form>
+</div>
+{% endblock %}

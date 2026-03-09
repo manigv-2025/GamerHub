@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Admin Login - GamerHub{% endblock %}
+{% block content %}
+<div class="container" style="max-width: 400px; margin: 60px auto;">
+    <h1 style="color: #00d4ff; text-align: center;">Admin Login</h1>
+    
+    <form method="POST" style="background: #1a1f3a; padding: 30px; border-radius: 8px; border: 2px solid #ff006e; margin-top: 30px;">
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Username</label>
+            <input type="text" name="username" required style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="display: block; color: #00d4ff; margin-bottom: 8px;">Password</label>
+            <input type="password" name="password" required style="width: 100%; padding: 10px; background: #0a0e27; border: 1px solid #00d4ff; color: #e0e0e0; border-radius: 4px;">
+        </div>
+        
+        <button type="submit" style="width: 100%; padding: 12px; background: #00d4ff; color: #0a0e27; border: none; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 16px;">Login</button>
+    </form>
+    
+    <p style="text-align: center; color: #888; margin-top: 20px;">Default: admin / admin123</p>
+</div>
+{% endblock %}

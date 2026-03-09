@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard - GamerHub{% endblock %}
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+        <h1 style="color: #00d4ff;">Admin Dashboard</h1>
+        <a href="/admin/logout" style="background: #ff006e; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none;">Logout</a>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
+        <div style="background: #1a1f3a; padding: 20px; border-radius: 8px; border: 1px solid #00d4ff;">
+            <h3 style="color: #00d4ff;">Total Posts</h3>
+            <p style="font-size: 32px; color: #ff006e;">{{ total_posts }}</p>
+        </div>
+        <div style="background: #1a1f3a; padding: 20px; border-radius: 8px; border: 1px solid #00d4ff;">
+            <h3 style="color: #00d4ff;">Published</h3>
+            <p style="font-size: 32px; color: #00d4ff;">{{ published_posts }}</p>
+        </div>
+        <div style="background: #1a1f3a; padding: 20px; border-radius: 8px; border: 1px solid #00d4ff;">
+            <h3 style="color: #00d4ff;">Total Views</h3>
+            <p style="font-size: 32px; color: #ff006e;">{{ total_views }}</p>
+        </div>
+    </div>
+    
+    <div style="margin-bottom: 40px;">
+        <a href="/admin/create" style="background: #00d4ff; color: #0a0e27; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: bold;">➕ Create New Post</a>
+    </div>
+    
+    <h2 style="color: #ff006e;">Recent Posts</h2>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <tr style="background: #1a1f3a; border-bottom: 1px solid #ff006e;">
+            <th style="padding: 12px; text-align: left; color: #00d4ff;">Title</th>
+            <th style="padding: 12px; text-align: left; color: #00d4ff;">Category</th>
+            <th style="padding: 12px; text-align: left; color: #00d4ff;">Published</th>
+            <th style="padding: 12px; text-align: left; color: #00d4ff;">Actions</th>
+        </tr>
+        {% for post in recent_posts %}
+        <tr style="border-bottom: 1px solid #333;">
+            <td style="padding: 12px;">{{ post.title }}</td>
+            <td style="padding: 12px;">{{ post.category }}</td>
+            <td style="padding: 12px; color: {% if post.published %}#00d4ff{% else %}#ff006e{% endif %};">{% if post.published %}✓ Yes{% else %}✗ Draft{% endif %}</td>
+            <td style="padding: 12px;">
+                <a href="/admin/edit/{{ post.id }}" style="color: #00d4ff; margin-right: 10px;">Edit</a>
+                <a href="/admin/delete/{{ post.id }}" style="color: #ff006e;" onclick="return confirm('Delete this post?');">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

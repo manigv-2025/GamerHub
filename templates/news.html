@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Gaming News - GamerHub{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 style="color: #00d4ff;">Gaming News</h1>
+    <div style="margin-top: 30px;">
+        {% for post in posts %}
+        <div style="background: #1a1f3a; padding: 20px; margin-bottom: 20px; border-radius: 8px; border-left: 4px solid #00d4ff;">
+            <h3 style="color: #00d4ff;">{{ post.title }}</h3>
+            <p style="color: #888; font-size: 14px;">{{ post.created_at.strftime('%Y-%m-%d') }}</p>
+            <p>{{ post.description[:150] }}...</p>
+            <a href="/article/{{ post.slug }}" style="color: #00d4ff; text-decoration: none;">Read News →</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

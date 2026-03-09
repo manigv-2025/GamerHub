@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Search Results - GamerHub{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 style="color: #00d4ff;">Search Results</h1>
+    <p style="color: #888; margin: 20px 0;">Found {{ results|length }} results for: <strong style="color: #00d4ff;">"{{ query }}"</strong></p>
+    
+    {% if results %}
+    <div style="margin-top: 30px;">
+        {% for post in results %}
+        <div style="background: #1a1f3a; padding: 20px; margin-bottom: 15px; border-radius: 8px; border-left: 4px solid #00d4ff;">
+            <h3 style="color: #00d4ff;">{{ post.title }}</h3>
+            <p style="color: #888; font-size: 14px;">{{ post.category }} • {{ post.created_at.strftime('%Y-%m-%d') }}</p>
+            <p>{{ post.description[:150] }}...</p>
+            <a href="/article/{{ post.slug }}" style="color: #00d4ff; text-decoration: none;">Read More →</a>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p style="color: #ff006e; margin-top: 30px;">No results found. Try a different search.</p>
+    {% endif %}
+</div>
+{% endblock %}

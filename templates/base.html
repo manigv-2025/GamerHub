@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}GamerHub - Gaming Hardware Blog{% endblock %}</title>
+    <meta name="description" content="Professional gaming hardware reviews and news">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0e27; color: #e0e0e0; }
+        header { background: #1a1f3a; border-bottom: 2px solid #ff006e; padding: 20px 0; }
+        nav { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        nav a { color: #00d4ff; text-decoration: none; margin-left: 30px; font-weight: 600; }
+        nav a:hover { color: #ff006e; }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .alert { padding: 15px; margin: 20px 0; border-radius: 8px; }
+        .alert-success { background: #0d472b; border: 1px solid #00d4ff; color: #00d4ff; }
+        .alert-error { background: #470d0d; border: 1px solid #ff006e; color: #ff006e; }
+        footer { background: #1a1f3a; color: #888; text-align: center; padding: 20px; margin-top: 60px; border-top: 2px solid #ff006e; }
+    </style>
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div style="font-size: 24px; color: #00d4ff; font-weight: bold;">🎮 GamerHub</div>
+            <div>
+                <a href="/">Home</a>
+                <a href="/reviews">Reviews</a>
+                <a href="/news">News</a>
+                <a href="/mods">GTA V Mods</a>
+                <a href="/admin/login">Admin</a>
+            </div>
+        </nav>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="container">
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+
+    <footer>
+        <p>&copy; 2026 GamerHub. All rights reserved. | <a href="/admin/login" style="color: #00d4ff;">Admin Panel</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ post.title }} - GamerHub{% endblock %}
+{% block content %}
+<div class="container">
+    <article>
+        <h1 style="color: #00d4ff; font-size: 36px;">{{ post.title }}</h1>
+        <p style="color: #888;">By {{ post.author }} • {{ post.created_at.strftime('%Y-%m-%d') }} • Views: {{ post.views }}</p>
+        
+        {% if post.rating %}
+        <p style="color: #ff006e; font-size: 20px;">⭐ Rating: {{ post.rating }}/10</p>
+        {% endif %}
+        
+        <img src="{{ post.featured_image }}" style="width: 100%; height: auto; margin: 20px 0; border-radius: 8px;">
+        
+        <div style="font-size: 16px; line-height: 1.8; margin: 20px 0;">
+            {{ post.content | safe }}
+        </div>
+        
+        {% if pros %}
+        <h3 style="color: #00d4ff; margin-top: 30px;">✅ Pros</h3>
+        <ul>
+            {% for pro in pros %}
+            <li>{{ pro }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% if cons %}
+        <h3 style="color: #ff006e;">❌ Cons</h3>
+        <ul>
+            {% for con in cons %}
+            <li>{{ con }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+        {% if post.affiliate_link %}
+        <a href="{{ post.affiliate_link }}" target="_blank" style="display: inline-block; background: #00d4ff; color: #0a0e27; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: bold; margin-top: 20px;">Buy on Amazon →</a>
+        {% endif %}
+    </article>
+    
+    <hr style="border: 1px solid #ff006e; margin: 40px 0;">
+    
+    <div style="text-align: center;">
+        <a href="/" style="color: #00d4ff; text-decoration: none; font-size: 16px;">← Back to Home</a>
+    </div>
+</div>
+{% endblock %}
